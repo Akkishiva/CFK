@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ldap
+  namespace: confluent  # Set the namespace to "con" as per your requirement
+spec:
+  selector:
+    app: openldap
+  ports:
+    - protocol: TCP
+      port: 389  # Adjust the port as needed
+      targetPort: 389

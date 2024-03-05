@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openldap-deployment
+  namespace: confluent  # Set the namespace to "con" as per your requirement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openldap
+  template:
+    metadata:
+      labels:
+        app: openldap
+    spec:
+      containers:
+        - name: openldap
+          image: avinashupadhya99/example_com_openldap:1.0.0
+          ports:
+            - containerPort: 389  # Adjust the port as needed
+          env:
+            - name: LDAP_ORGANISATION
+              value: "Example Company"
+            - name: LDAP_DOMAIN
+              value: "example.com"
+            - name: LDAP_ADMIN_PASSWORD
+              value: "secret"
+          volumeMounts:
+            - name: ldap-data
+              mountPath: /var/lib/ldap
+      volumes:
+        - name: ldap-data
+          emptyDir: {}

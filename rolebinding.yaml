@@ -1,0 +1,15 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ConfluentRolebinding
+metadata:
+  name: kafka
+  namespace: confluent
+spec:
+  # The Connect cluster is named `connect` and is deployed in the namespace `confluent`
+  # The Connect cluster id naming pattern is: <namespace>.<connect-cluster-name>
+  clustersScopeByIds:
+    kafkaClusterId: Ur1WivHYQeOo3kiACdoP1A
+  principal:
+    type: user
+    name: deepak
+  role: ClusterAdmin
+

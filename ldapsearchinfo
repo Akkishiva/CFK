@@ -1,0 +1,149 @@
+ldapsearch -LLL -x -H ldap://ldap.confluent.svc.cluster.localhost:389 -b 'dc=example,dc=com' -D "cn=admin,dc=example,dc=com" -w 'secret'
+
+dn: dc=example,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Example Company
+dc: example
+
+dn: cn=admin,dc=example,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: e1NTSEF9T3R6a2hSQzVxS0VJQlhIaTA1Uk9ZZkMyNDRvM3pzbHc=
+
+dn: ou=groups,dc=example,dc=com
+ou: groups
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=Administrators,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+objectClass: top
+member: cn=rahul,ou=devops,ou=users,dc=example,dc=com
+cn: Administrators
+
+dn: cn=BackendDev,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+objectClass: top
+member: cn=george,ou=developers,ou=users,dc=example,dc=com
+member: cn=tim,ou=developers,ou=users,dc=example,dc=com
+cn: BackendDev
+
+dn: cn=FrontendDev,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+objectClass: top
+member: cn=tim,ou=developers,ou=users,dc=example,dc=com
+member: cn=tina,ou=designers,ou=users,dc=example,dc=com
+cn: FrontendDev
+
+dn: cn=KafkaAdmin,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+objectClass: top
+member: cn=deepak,ou=devops,ou=users,dc=example,dc=com
+member: cn=rahul,ou=devops,ou=users,dc=example,dc=com
+cn: KafkaAdmin
+
+dn: cn=KafkaDev,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+objectClass: top
+member: cn=george,ou=developers,ou=users,dc=example,dc=com
+cn: KafkaDev
+
+dn: ou=users,dc=example,dc=com
+ou: users
+objectClass: organizationalUnit
+objectClass: top
+
+dn: ou=designers,ou=users,dc=example,dc=com
+ou: designers
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=tina,ou=designers,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1odEJ3Ni9LNFVKbzkra001MlZFdTI1TFpXTEk9
+objectClass: person
+objectClass: top
+cn: tina
+sn: gupta
+
+dn: ou=developers,ou=users,dc=example,dc=com
+ou: developers
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=george,ou=developers,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1PN1FXb3NYb1RNeG91MnVtSEFmQnA2YnUvc0U9
+objectClass: person
+objectClass: top
+cn: george
+sn: smith
+
+dn: cn=tim,ou=developers,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1IMVVUeUJzcm9yN2pybVJPeHNZckhHMFlpQms9
+objectClass: person
+objectClass: top
+cn: tim
+sn: bark
+
+dn: cn=will,ou=developers,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1aS2U1TERMT1I5ZE1tandYakZCQnBqNkdTNk09
+objectClass: person
+objectClass: top
+cn: will
+sn: allen
+
+dn: ou=devops,ou=users,dc=example,dc=com
+ou: devops
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=deepak,ou=devops,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1LTkl3Si9kK1NEL1Y4Y0I5VGdIaEtTTmIrZDg9
+objectClass: person
+objectClass: top
+cn: deepak
+sn: agarwal
+
+dn: cn=rahul,ou=devops,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1MK0NoV2QyeWNESEo2alp0QnpDc0RRWHBER0E9
+objectClass: person
+objectClass: top
+cn: rahul
+sn: sharma
+
+dn: ou=system,ou=users,dc=example,dc=com
+ou: system
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=connect,ou=system,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1qbk8yQzk0Y3ROSmtRUXltYnZUSkx6MDVqbjg9
+objectClass: person
+objectClass: top
+cn: connect
+sn: cluster
+
+dn: cn=control,ou=system,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1LQm1tN1Rtc2R4TUd4OXNCSEw4NUZsbFM0TzA9
+objectClass: person
+objectClass: top
+cn: control
+sn: center
+
+dn: cn=ksql,ou=system,ou=users,dc=example,dc=com
+userPassword:: e1NIQX12NlI1VjhDTDZHUGVuWmZpK2lJOExwU1d1K1k9
+objectClass: person
+objectClass: top
+cn: ksql
+sn: db
+
+dn: cn=schema,ou=system,ou=users,dc=example,dc=com
+userPassword:: e1NIQX1ENysxVXVJeDBWZVJWd2MrK29IV2l1Z3Fzekk9
+objectClass: person
+objectClass: top
+cn: schema
+sn: registry
+

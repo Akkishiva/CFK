@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-broker-deployment
+  namespace: confluent
+  labels:
+    app: kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      containers:
+      - name: kafka-broker-container
+        image: confluentinc/cp-server:7.6.0
+        command: ["sleep", "infinity"]
+        volumeMounts:
+        - name: kafka-generated-jks
+          mountPath: /mnt/sslcerts
+      volumes:
+      - name: kafka-generated-jks
+        secret:
+          secretName: kafka-generated-jks
